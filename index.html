@@ -4,11 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Алина, наш год</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
       rel="stylesheet"
+      href="https://yastatic.net/s3/home/fonts/ys/1/text.css"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -419,9 +417,19 @@
       <div class="modal__panel" role="document">
         <div class="modal__header">
           <p class="modal__title">Наша статистика из TG</p>
-          <button class="modal__close" type="button" id="stats-close">
-            Закрыть
-          </button>
+          <div class="modal__actions">
+            <a
+              class="modal__link"
+              href="https://tg-love.vercel.app"
+              target="_blank"
+              rel="noopener"
+            >
+              Открыть в новом окне
+            </a>
+            <button class="modal__close" type="button" id="stats-close">
+              Закрыть
+            </button>
+          </div>
         </div>
         <div class="modal__body">
           <iframe

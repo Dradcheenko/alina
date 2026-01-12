@@ -44,7 +44,8 @@ body {
     ),
     linear-gradient(135deg, var(--bg), var(--bg-2));
   color: var(--text);
-  font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  font-family: "Yandex Sans Text", "Yandex Sans", system-ui, -apple-system,
+    sans-serif;
   line-height: 1.6;
   padding: 48px 28px 120px;
   position: relative;
@@ -813,6 +814,23 @@ html[data-theme="light"] .modal__panel {
   padding: 14px 18px;
   background: rgba(255, 255, 255, 0.04);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal__link {
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.modal__link:hover {
+  border-color: var(--accent);
 }
 
 .modal__title {

@@ -7,6 +7,7 @@ const statsOpen = document.getElementById("stats-open");
 const statsModal = document.getElementById("stats-modal");
 const statsClose = document.getElementById("stats-close");
 const themeToggle = document.getElementById("theme-toggle");
+const statsUrl = "https://tg-love.vercel.app";
 
 document.documentElement.classList.remove("no-js");
 
@@ -62,6 +63,13 @@ document.addEventListener("keydown", (event) => {
 });
 
 const openStats = () => {
+  const isMobile =
+    window.matchMedia?.("(max-width: 768px)").matches ||
+    /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  if (isMobile) {
+    window.open(statsUrl, "_blank", "noopener");
+    return;
+  }
   statsModal?.classList.add("active");
   statsModal?.setAttribute("aria-hidden", "false");
 };
