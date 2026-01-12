@@ -4,6 +4,31 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "CY Grotesk Grand";
+  src: url("assets/fonts/cy-grotesk-grand-dark.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alexer";
+  src: url("assets/fonts/Demo_Fonts/Fontspring-DEMO-alexer-regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alexer";
+  src: url("assets/fonts/Demo_Fonts/Fontspring-DEMO-alexer-medium.otf")
+    format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   --bg: #0c0520;
   --bg-2: #1f0b44;
@@ -44,8 +69,7 @@ body {
     ),
     linear-gradient(135deg, var(--bg), var(--bg-2));
   color: var(--text);
-  font-family: "Yandex Sans Text", "Yandex Sans", system-ui, -apple-system,
-    sans-serif;
+  font-family: "Alexer", system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   padding: 48px 28px 120px;
   position: relative;
@@ -108,8 +132,9 @@ h2,
 h3,
 h4 {
   margin: 0;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
+  font-family: "CY Grotesk Grand", system-ui, -apple-system, sans-serif;
 }
 
 h1 {
@@ -396,7 +421,7 @@ html[data-theme="light"] .hero {
 
 .hero h1 span {
   color: var(--accent);
-  font-family: "Playfair Display", "Space Grotesk", serif;
+  font-family: "CY Grotesk Grand", system-ui, -apple-system, sans-serif;
 }
 
 .eyebrow {
@@ -500,7 +525,7 @@ html[data-theme="light"] .btn--primary {
 
 .badge__title {
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 6px;
 }
 
@@ -704,7 +729,7 @@ html[data-theme="light"] .btn--primary {
 
 .video-card__title {
   font-size: 18px;
-  font-weight: 700;
+  font-weight: 600;
   margin-bottom: 6px;
 }
 
@@ -834,7 +859,7 @@ html[data-theme="light"] .modal__panel {
 }
 
 .modal__title {
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .modal__close {
