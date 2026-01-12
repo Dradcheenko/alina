@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Организационная структура службы питания</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #ffffff;
+      }
+
+      .fnb-chart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .level {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+      }
+
+      .box {
+        border: 2px solid #6a8f4e;
+        border-radius: 8px;
+        padding: 12px 16px;
+        margin: 0 12px;
+        text-align: center;
+        min-width: 220px;
+      }
+
+      .title {
+        font-weight: bold;
+        margin-bottom: 6px;
+        color: #3b5e2b;
+      }
+
+      .position {
+        font-size: 14px;
+      }
+
+      .connector {
+        width: 2px;
+        height: 20px;
+        background: #6a8f4e;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="fnb-chart">
+      <!-- Руководство службы -->
+      <div class="level">
+        <div class="box">
+          <div class="title">Руководитель службы питания (F&B Manager)</div>
+        </div>
+      </div>
+
+      <div class="connector"></div>
+
+      <!-- Производство и сервис -->
+      <div class="level">
+        <div class="box">
+          <div class="title">Кухня</div>
+          <div class="position">
+            Шеф-повар<br />
+            Повар горячего цеха<br />
+            Повар холодного цеха<br />
+            Кухонный работник
+          </div>
+        </div>
+
+        <div class="box">
+          <div class="title">Зал ресторана</div>
+          <div class="position">
+            Старший официант<br />
+            Официанты<br />
+            Бармен
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="no-js">
+<html lang="ru" class="no-js" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -45,6 +45,12 @@
         <div class="hero__actions reveal" data-animate="fade-up">
           <a class="btn btn--primary" href="#gallery">Смотреть фото</a>
           <a class="btn btn--ghost" href="#videos">Видео</a>
+          <button class="btn btn--ghost" type="button" id="stats-open">
+            Наша статистика из TG
+          </button>
+          <button class="btn btn--ghost" type="button" id="theme-toggle">
+            Переключить тему
+          </button>
         </div>
         <div class="chips reveal" data-animate="fade-up">
           <span class="chip">я</span>
@@ -407,6 +413,26 @@
       <button class="lightbox__close" aria-label="Закрыть">×</button>
       <img class="lightbox__img" alt="" />
       <p class="lightbox__caption"></p>
+    </div>
+
+    <div class="modal" id="stats-modal" aria-hidden="true" role="dialog">
+      <div class="modal__panel" role="document">
+        <div class="modal__header">
+          <p class="modal__title">Наша статистика из TG</p>
+          <button class="modal__close" type="button" id="stats-close">
+            Закрыть
+          </button>
+        </div>
+        <div class="modal__body">
+          <iframe
+            class="modal__frame"
+            title="Статистика из TG"
+            src="https://tg-love.vercel.app"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          ></iframe>
+        </div>
+      </div>
     </div>
 
     <script src="script.js"></script>

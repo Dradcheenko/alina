@@ -3,8 +3,29 @@ const lightboxImg = lightbox.querySelector(".lightbox__img");
 const lightboxCaption = lightbox.querySelector(".lightbox__caption");
 const closeBtn = lightbox.querySelector(".lightbox__close");
 const loader = document.getElementById("loader");
+const statsOpen = document.getElementById("stats-open");
+const statsModal = document.getElementById("stats-modal");
+const statsClose = document.getElementById("stats-close");
+const themeToggle = document.getElementById("theme-toggle");
 
 document.documentElement.classList.remove("no-js");
+
+const THEME_KEY = "alina-theme";
+const applyTheme = (theme) => {
+  document.documentElement.setAttribute("data-theme", theme);
+  if (themeToggle) {
+    themeToggle.textContent =
+      theme === "light" ? "Темная тема" : "Светлая тема";
+  }
+};
+
+const storedTheme = localStorage.getItem(THEME_KEY);
+if (storedTheme) {
+  applyTheme(storedTheme);
+} else {
+  const prefersLight = window.matchMedia?.("(prefers-color-scheme: light)").matches;
+  applyTheme(prefersLight ? "light" : "dark");
+}
 
 const openLightbox = (img, caption) => {
   lightboxImg.src = img;
@@ -38,6 +59,38 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && lightbox.classList.contains("active")) {
     closeLightbox();
   }
+});
+
+const openStats = () => {
+  statsModal?.classList.add("active");
+  statsModal?.setAttribute("aria-hidden", "false");
+};
+
+const closeStats = () => {
+  statsModal?.classList.remove("active");
+  statsModal?.setAttribute("aria-hidden", "true");
+};
+
+statsOpen?.addEventListener("click", openStats);
+statsClose?.addEventListener("click", closeStats);
+
+statsModal?.addEventListener("click", (event) => {
+  if (event.target === statsModal) {
+    closeStats();
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && statsModal?.classList.contains("active")) {
+    closeStats();
+  }
+});
+
+themeToggle?.addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme") || "dark";
+  const next = current === "dark" ? "light" : "dark";
+  localStorage.setItem(THEME_KEY, next);
+  applyTheme(next);
 });
 
 const revealItems = document.querySelectorAll(".reveal");
