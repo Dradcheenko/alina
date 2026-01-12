@@ -20,12 +20,30 @@ const applyTheme = (theme) => {
   }
 };
 
-const storedTheme = localStorage.getItem(THEME_KEY);
+const getStoredTheme = () => {
+  try {
+    return localStorage.getItem(THEME_KEY);
+  } catch {
+    return null;
+  }
+};
+
+const setStoredTheme = (theme) => {
+  try {
+    localStorage.setItem(THEME_KEY, theme);
+  } catch {
+    // ignore storage errors on mobile/private mode
+  }
+};
+
+const storedTheme = getStoredTheme();
 if (storedTheme) {
   applyTheme(storedTheme);
 } else {
-  const prefersLight = window.matchMedia?.("(prefers-color-scheme: light)").matches;
-  applyTheme(prefersLight ? "light" : "dark");
+  const media = window.matchMedia
+    ? window.matchMedia("(prefers-color-scheme: light)")
+    : null;
+  applyTheme(media && media.matches ? "light" : "dark");
 }
 
 const openLightbox = (img, caption) => {
@@ -64,10 +82,10 @@ document.addEventListener("keydown", (event) => {
 
 const openStats = () => {
   const isMobile =
-    window.matchMedia?.("(max-width: 768px)").matches ||
+    (window.matchMedia && window.matchMedia("(max-width: 768px)").matches) ||
     /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
   if (isMobile) {
-    window.open(statsUrl, "_blank", "noopener");
+    window.location.href = statsUrl;
     return;
   }
   statsModal?.classList.add("active");
@@ -79,8 +97,22 @@ const closeStats = () => {
   statsModal?.setAttribute("aria-hidden", "true");
 };
 
-statsOpen?.addEventListener("click", openStats);
-statsClose?.addEventListener("click", closeStats);
+let lastTouch = 0;
+const bindTap = (el, handler) => {
+  if (!el) return;
+  el.addEventListener("touchend", (event) => {
+    lastTouch = Date.now();
+    event.preventDefault();
+    handler();
+  });
+  el.addEventListener("click", () => {
+    if (Date.now() - lastTouch < 600) return;
+    handler();
+  });
+};
+
+bindTap(statsOpen, openStats);
+bindTap(statsClose, closeStats);
 
 statsModal?.addEventListener("click", (event) => {
   if (event.target === statsModal) {
@@ -94,10 +126,10 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-themeToggle?.addEventListener("click", () => {
+bindTap(themeToggle, () => {
   const current = document.documentElement.getAttribute("data-theme") || "dark";
   const next = current === "dark" ? "light" : "dark";
-  localStorage.setItem(THEME_KEY, next);
+  setStoredTheme(next);
   applyTheme(next);
 });
 
